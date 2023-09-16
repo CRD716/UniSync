@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import './Login.css';
 import { Navigate, useNavigate } from 'react-router-dom';
 
+
 function generateRoomCode() {
   // Generate a random 6-letter room code
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -10,20 +11,25 @@ function generateRoomCode() {
   return code.join('');
 }
 
-function handleCreateRoom() {
-  const newRoomCode = generateRoomCode();
-  console.log('Creating room with code:', newRoomCode);
-  Navigate('/room');
-}
+
 
 function Login() {
   const [isJoining, setIsJoining] = useState(true);
   const [roomCode, setRoomCode] = useState('');
-  const history = useNavigate();
+  const [rooms, setRooms] = useState([]);
+  const navigate = useNavigate();
+
+
+  function HandleCreateRoom() {
+    const newRoomCode = generateRoomCode();
+    setRooms([...rooms, newRoomCode]);
+    console.log('Creating room with code:', newRoomCode);
+    navigate('/'+roomCode);
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    
     if (isJoining) {
       // Handle joining a room with roomCode
       console.log('Joining room with code:', roomCode);
@@ -49,7 +55,7 @@ function Login() {
         </div>
         <button type="submit">Join Room</button>
         <div />
-        <button onClick={handleCreateRoom}>Create A Room</button>
+        <button onClick={HandleCreateRoom}>Create A Room</button>
       </form>
     </div>
   );

@@ -1,0 +1,2 @@
+# HackSMU
+Our HackSMU project :)

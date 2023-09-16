@@ -1,10 +1,25 @@
 // Login.js
 import React, { useState } from 'react';
 import './Login.css';
+import { Navigate, useNavigate } from 'react-router-dom';
+
+function generateRoomCode() {
+  // Generate a random 6-letter room code
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const code = Array.from({ length: 6 }, () => characters[Math.floor(Math.random() * characters.length)]);
+  return code.join('');
+}
+
+function handleCreateRoom() {
+  const newRoomCode = generateRoomCode();
+  console.log('Creating room with code:', newRoomCode);
+  Navigate('/room');
+}
 
 function Login() {
   const [isJoining, setIsJoining] = useState(true);
   const [roomCode, setRoomCode] = useState('');
+  const history = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -14,7 +29,9 @@ function Login() {
       console.log('Joining room with code:', roomCode);
     } else {
       // Handle creating a room with roomCode
-      console.log('Creating room with code:', roomCode);
+      const newRoomCode = generateRoomCode();
+      console.log('Creating room with code:', newRoomCode);
+      Navigate('/room/room');
     }
   };
 
@@ -31,10 +48,9 @@ function Login() {
           />
         </div>
         <button type="submit">Join Room</button>
+        <div />
+        <button onClick={handleCreateRoom}>Create A Room</button>
       </form>
-      <p onClick={() => setIsJoining(!isJoining)}>
-        {isJoining ? 'Create a new room instead.' : 'Join an existing room.'}
-      </p>
     </div>
   );
 }

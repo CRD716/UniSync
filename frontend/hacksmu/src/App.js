@@ -7,6 +7,7 @@ import Home from './Home';
 import About from './About';
 import { useAuth } from './AuthContext';
 import Login from './Login';
+import Room from './Room';
 
 function App() {
   const { authenticated } = useAuth();
@@ -23,6 +24,7 @@ function App() {
               <Route path="/" exact element={<Home />} />
               <Route path="/" exact element={<Home />} />
               <Route path="/about" element={<About />} />
+              <Route path="/room" element={<Room />} />
             </>
           )}
           

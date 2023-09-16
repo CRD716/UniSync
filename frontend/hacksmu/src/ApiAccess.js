@@ -9,7 +9,7 @@ fetch('https://example.com/api/create', {
 })
 .then(response => response.json())
 .then(data => {
-  // Process the response data
+  // Process the response data 
 })
 .catch(error => {
   // Handle errors

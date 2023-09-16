@@ -24,7 +24,7 @@ function App() {
               <Route path="/" exact element={<Home />} />
               <Route path="/" exact element={<Home />} />
               <Route path="/about" element={<About />} />
-              <Route path="/room" element={<Room />} />
+              Login.rooms.map()
             </>
           )}
           

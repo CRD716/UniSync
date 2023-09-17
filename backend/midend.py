@@ -27,6 +27,7 @@ def submittext():
     text = data['txt']
 
     #Handle new room
+    global masterdict
     if (not roomid in masterdict.values()):
         newdict = {
             roomid : {
@@ -37,6 +38,7 @@ def submittext():
             }
         }
         masterdict = masterdict | newdict
+        print(masterdict)
     else:
         #Handle existing room
         maxpost = 0
@@ -58,7 +60,9 @@ def submittext():
 
 @app.route("/gennotes/<roomid>")
 def gennotes(roomid):
-    if (not roomid in masterdict.values()):
+    global masterdict
+    print(masterdict)
+    if (not roomid in masterdict):
         return "Invalid roomid", 404
     
     concatedString = ""
@@ -66,7 +70,7 @@ def gennotes(roomid):
     for key in masterdict.get(roomid):
         print(key)
         concatedString += masterdict.get(roomid).get(key).get("txt") + " "
-    prompt = "### Instruction:\n"+"Summarize and combine the following notes from multiple people."+"\nWrite the word \"END\" when you complete the task."+concatedString+"\n### Response:\n"
+    prompt = "### Instruction:\n"+"Summarize and combine the following notes from multiple people."+"\nWrite the word \"END\" when you complete the task."+" "+concatedString+"\n### Response:\n"
     output = llm(prompt, max_tokens=256, temperature=0.3, mirostat_mode=2, stop=["END"], echo=True)
     print(output)
     return output, 200

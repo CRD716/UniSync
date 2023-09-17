@@ -12,7 +12,6 @@ function generateRoomCode() {
 }
 
 
-
 function Login() {
   const [isJoining, setIsJoining] = useState(true);
   const [roomCode, setRoomCode] = useState('');
@@ -22,9 +21,10 @@ function Login() {
 
   function HandleCreateRoom() {
     const newRoomCode = generateRoomCode();
-    setRooms([...rooms, newRoomCode]);
+    setRooms(() => {console.log("len " + rooms.length()); return([...rooms, newRoomCode])});
+    console.log(rooms);
     console.log('Creating room with code:', newRoomCode);
-    navigate('/'+roomCode);
+    navigate(('/'+newRoomCode));
   }
 
   const handleSubmit = (e) => {

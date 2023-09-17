@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import './Login.css';
 import { Navigate, useNavigate } from 'react-router-dom';
+import Room from './Room';
 
 
 function generateRoomCode() {
@@ -15,7 +16,7 @@ function generateRoomCode() {
 function Login(props) {
   const [isJoining, setIsJoining] = useState(true);
   const [roomCode, setRoomCode] = useState('');
-  const {updateRooms} = props;
+  const { updateRooms } = props;
   const navigate = useNavigate();
 
 
@@ -44,18 +45,23 @@ function Login(props) {
   return (
     <div className="login-container">
       <h2>Join A Room!</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="login-form">
         <div className="form-group">
-          <label>Room Code:</label>
+          <label className="form-label">Room Code:</label>
           <input
             type="text"
             value={roomCode}
             onChange={(e) => setRoomCode(e.target.value)}
+            className="form-input"
           />
         </div>
-        <button type="submit">Join Room</button>
-        <div />
-        <button onClick={HandleCreateRoom}>Create A Room</button>
+        <button type="submit" className="form-button">
+          Join Room
+        </button>
+        <div className="separator">or</div>
+        <button onClick={HandleCreateRoom} className="form-button">
+          Create A Room
+        </button>
       </form>
     </div>
   );

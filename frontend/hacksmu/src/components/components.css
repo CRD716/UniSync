@@ -1,0 +1,32 @@
+/* Style the name input */
+.name-input {
+    margin-bottom: 10px;
+  }
+  
+  /* Style the word count and submit button container */
+  .word-count-and-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  /* Style the submit button */
+  .submit-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-button:hover {
+    background-color: #0056b3;
+  }
+
+/* Style the file upload container */
+.file-upload {
+    text-align: center;
+  }

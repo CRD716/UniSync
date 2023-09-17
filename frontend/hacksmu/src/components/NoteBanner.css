@@ -1,0 +1,23 @@
+.note-banner {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #f9f9f9;
+  }
+  
+  .delete-button,
+  .download-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 5px 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .delete-button:hover,
+  .download-button:hover {
+    background-color: #0056b3;
+  }  

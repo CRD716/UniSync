@@ -1,29 +1,31 @@
 /* Navbar.css */
+
 .navbar {
-    background-color: #333;
-    color: white;
-    padding: 10px;
-  }
-  
-  .navbar ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .navbar li {
-    margin: 0 15px;
-  }
-  
-  .navbar a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    font-size: 1.2em;
-    transition: color 0.3s ease;
-  }
-  
-  .navbar a:hover {
-    color: #ff5722; /* Change the color on hover, you can choose your own color */
-  }  
+  background-color: #007bff; /* Set your desired background color */
+  color: #fff; /* Text color */
+  padding: 10px 0; /* Adjust the padding as needed */
+}
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.navbar li {
+  display: inline-block;
+  margin-right: 20px; /* Adjust the spacing between menu items */
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px; /* Adjust the font size as needed */
+  transition: color 0.3s;
+}
+
+.navbar a:hover {
+  color: #0056b3; /* Change the color on hover */
+}

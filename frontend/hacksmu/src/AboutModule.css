@@ -1,0 +1,31 @@
+/* AboutModule.css */
+.about-module {
+    display: flex;
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .module-image {
+    flex: 1;
+    padding: 10px;
+  }
+  
+  .module-image img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .module-details {
+    flex: 3;
+    padding: 10px;
+  }
+  
+  .module-details h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .module-details p {
+    font-size: 1rem;
+  }  

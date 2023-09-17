@@ -1,6 +1,8 @@
 import {React, useState} from 'react'
 import ReactDOM from 'react-dom'
 import './Modal.css'
+import postData from './ApiAccess'
+
 
 const MODAL_STYLES = {
     position: 'fixed',
@@ -80,6 +82,9 @@ export default function Modal({open, onClose}) {
         wordCount: wordCount,
       };
       console.log('Submitted Data:', dataObject);
+      const roomCode = window.location.href.split('3000/')[1];
+      console.log(window.location.href);
+      postData(roomCode, text)
     } else {
       // Word count exceeds the limit, show an error message
       alert('Word count exceeds the limit (750 words).');

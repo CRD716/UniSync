@@ -8,6 +8,7 @@ function NoteModal({ closeModal, addNote }) {
   const [uploadedFileName, setUploadedFileName] = useState('');
   const [wordCount, setWordCount] = useState(0);
   const [errorMessage, setErrorMessage] = useState('');
+  const [combined, setCombined] = useState('')
 
   const handleNameChange = (e) => {
     const inputName = e.target.value;
@@ -61,8 +62,8 @@ function NoteModal({ closeModal, addNote }) {
   
       // Call the addNote function to add the new note to the array
       addNote(newNote);
-      console.log(window.location.href.split('3001/')[1]);
-      postData(name, window.location.href.split('3001/')[1], text)
+      console.log(window.location.href.split('3000/')[1]);
+      postData(name, window.location.href.split('3000/')[1], text);
   
       // Clear the input fields and word count
       setName('');

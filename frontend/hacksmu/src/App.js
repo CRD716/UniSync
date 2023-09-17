@@ -20,24 +20,22 @@ function App() {
 
   return (
     <Router>
-      <div className="App">
-        <Navbar />
-        <Routes>
-          {/* {!authenticated ? ( */}
-           
-           {/* ) : ( */}
-            <>
-              <Route path="/" element={<Login updateRooms={updateRooms}/>} />
-              {/* <Route path="/" exact element={<Home />} /> */}
-              <Route path="/about" element={<About />} />
-              {rooms.map((item) => (<Route path={"/" + item} element={<Room />} /> ))}
-            </>
-          {/* )} */}
-          
-          
-        </Routes>
-        <Modal open={isOpen} onClose={() => setIsOpen(false)}/>
-      </div>
+        <div className="App">
+          <Navbar />
+          <Routes>
+            {/* {!authenticated ? ( */}
+            
+            {/* ) : ( */}
+              <>
+                <Route path="/" element={<Login updateRooms={updateRooms}/>} />
+                {/* <Route path="/" exact element={<Home />} /> */}
+                <Route path="/about" element={<About />} />
+                {rooms.map((item) => (<Route path={"/" + item} element={<Room />} /> ))}
+              </>
+            {/* )} */}
+          </Routes>
+          <Modal open={isOpen} onClose={() => setIsOpen(false)}/>
+        </div>
     </Router>
   );
 }

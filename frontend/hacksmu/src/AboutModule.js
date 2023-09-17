@@ -2,7 +2,7 @@
 import React from 'react';
 import './AboutModule.css';
 
-function AboutModule({ name, biography, imageUrl }) {
+function AboutModule({ name, biography, imageUrl, social }) {
   return (
     <div className="about-module">
       <div className="module-image">
@@ -11,6 +11,7 @@ function AboutModule({ name, biography, imageUrl }) {
       <div className="module-details">
         <h2>{name}</h2>
         <p>{biography}</p>
+        <a>{social}</a>
       </div>
     </div>
   );

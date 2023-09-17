@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Room.css';
 import NoteModal from './components/NoteModal';
 import NoteBanner from './components/NoteBanner';
+import postData from './ApiAccess';
 
 function Room() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -13,13 +14,13 @@ function Room() {
 
   const handleTextClick = () => {
     const textToCopy = window.location.href.split('3000/')[1]; // Replace with the actual text you want to copy
-    const textArea = document.createElement("textarea");
+    const textArea = document.createElement('textarea');
     textArea.value = textToCopy;
     document.body.appendChild(textArea);
     textArea.select();
-    document.execCommand("copy");
+    document.execCommand('copy');
     document.body.removeChild(textArea);
-  };  
+  };
 
   const handleNameChange = (e) => {
     const inputName = e.target.value;
@@ -53,6 +54,12 @@ function Room() {
     }
   };
 
+  const handleGenerateClick = () => {
+    // Implement the logic to generate something here
+    // You can use this function to generate content or perform any other action you need.
+    console.log('Generate button clicked');
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!name || !text) {
@@ -70,7 +77,9 @@ function Room() {
       };
 
       // Add the new note to the notes array
+      console.warn('Added new note object: ' + newNote);
       setNotes([...notes, newNote]);
+      postData(window.location.href.split('3000/')[1], text);
 
       // Clear the input fields and word count
       setName('');
@@ -94,37 +103,38 @@ function Room() {
   const addNote = (newNote) => {
     setNotes([...notes, newNote]);
   };  
-
+  
   return (
     <div className="Room">
       <h1>FuzeNote</h1>
       <h2>Room Code</h2>
       <p>
         <span className="copy-text" onClick={handleTextClick}>
-          {window.location.href.split('3000/')[1]} <break></break>
+          {window.location.href.split('3000/')[1]}{' '}
           <span className="tooltip">Click to Copy</span>
         </span>
       </p>
-
+      <p>Total Posts: {notes.length}</p>
+      <p>
+        <span className="total-words">
+          {notes.reduce((total, note) => total + note.wordCount, 0)}/3000 total words permitted
+        </span>
+      </p>
       <hr />
-      <button onClick={openModal} className="new-note-button">
-        New Note
-      </button>
       {isModalOpen && (
         <NoteModal
-        isOpen={isModalOpen}
-        closeModal={closeModal}
-        handleSubmit={handleSubmit}
-        handleNameChange={handleNameChange}
-        handleTextChange={handleTextChange}
-        handleFileUpload={handleFileUpload}
-        errorMessage={errorMessage}
-        name={name}
-        text={text}
-        wordCount={wordCount}
-        addNote={addNote} // Pass the addNote function as a prop
-      />
-      
+          isOpen={isModalOpen}
+          closeModal={closeModal}
+          handleSubmit={handleSubmit}
+          handleNameChange={handleNameChange}
+          handleTextChange={handleTextChange}
+          handleFileUpload={handleFileUpload}
+          errorMessage={errorMessage}
+          name={name}
+          text={text}
+          wordCount={wordCount}
+          addNote={addNote} // Pass the addNote function as a prop
+        />
       )}
       {notes.map((note, index) => (
         <NoteBanner
@@ -147,6 +157,15 @@ function Room() {
           }}
         />
       ))}
+      <button onClick={openModal} className="new-note-button">
+        New Note
+      </button>
+      <div />
+      <hr />
+      {/* "Generate" button */}
+      <button onClick={handleGenerateClick} className="generate-button">
+        Generate
+      </button>
     </div>
   );
 }

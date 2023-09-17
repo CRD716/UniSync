@@ -1,13 +1,15 @@
 import Login from "./Login.js"
 import Modal from "./Modal.js"
-function postData(code, data) {
-  console.log(JSON.stringify({ roomCode: code, text: data }));
-  const response = fetch('http://localhost:3000', {
+function postData(nam, code, data) {
+  console.log(JSON.stringify({name: nam, roomid: code, txt: data }));
+  const response = fetch(' https://termite-working-logically.ngrok-free.app/submit-text', {
     method: 'POST',
+    mode: 'no-cors',
+    /*
     headers: {
       'Content-Type': 'application/json', // Specify the data format being sent
-    },
-    body: JSON.stringify({ roomCode: code, text: data }), // Send data in JSON format
+    },*/
+    body: JSON.stringify({name: nam, roomid: code, txt: data }), // Send data in JSON format
   })
   .then(response => response.json())
   .then(data => {

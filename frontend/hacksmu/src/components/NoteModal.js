@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './NoteModal.css';
+import postData from '../ApiAccess';
 
 function NoteModal({ closeModal, addNote }) {
   const [name, setName] = useState('');
@@ -60,6 +61,8 @@ function NoteModal({ closeModal, addNote }) {
   
       // Call the addNote function to add the new note to the array
       addNote(newNote);
+      console.log(window.location.href.split('3001/')[1]);
+      postData(name, window.location.href.split('3001/')[1], text)
   
       // Clear the input fields and word count
       setName('');

@@ -36,7 +36,7 @@ def gennotes(teamid):
         print(key)
         concatedString += masterdict.get(teamid).get(key).get("txt")
     prompt = "### Instruction:\n"+"Summarize and combine the following notes from multiple people."+"\nWrite the word \"END\" when you complete the task."+concatedString+"\n### Response:\n"
-    output = llm(prompt, max_tokens=128, temperature=0.5, mirostat_mode=2, stop=["END"], echo=True)
+    output = llm(prompt, max_tokens=128, temperature=0.3, mirostat_mode=2, stop=["END"], echo=True)
     print(output)
     return output, 200
 

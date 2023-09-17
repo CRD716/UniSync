@@ -8,10 +8,12 @@ import About from './About';
 import { useAuth } from './AuthContext';
 import Login from './Login';
 import Room from './Room';
+import Modal from './Modal'
 
 function App() {
   const { authenticated } = useAuth();
   const [rooms, setRooms] = useState([]);
+  const [isOpen, setIsOpen] = useState(false)
   const updateRooms = (newRooms) => {
     setRooms(newRooms);
   };
@@ -28,13 +30,13 @@ function App() {
               <Route path="/" element={<Login updateRooms={updateRooms}/>} />
               {/* <Route path="/" exact element={<Home />} /> */}
               <Route path="/about" element={<About />} />
-              {console.log("app " + rooms)}
               {rooms.map((item) => (<Route path={"/" + item} element={<Room />} /> ))}
             </>
           {/* )} */}
           
           
         </Routes>
+        <Modal open={isOpen} onClose={() => setIsOpen(false)}/>
       </div>
     </Router>
   );

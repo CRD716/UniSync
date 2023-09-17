@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import './Room.css'; // You can create a CSS file for styling
+import Modal from './Modal'
 
 function Room() {
   const [showPopup, setShowPopup] = useState(false);
   const [selectedBox, setSelectedBox] = useState(null);
+  const [isOpen, setIsOpen] = useState(false)
 
   // A function to handle box click and display the popup
   const handleBoxClick = (boxNumber) => {
     setSelectedBox(boxNumber);
-    setShowPopup(true);
+    setIsOpen(true);
   };
 
   // A function to close the popup
@@ -23,7 +25,7 @@ function Room() {
       className="box"
       onClick={() => handleBoxClick(index)}
     >
-      Box {index + 1}
+      <button className="box-button"># {index + 1} - name</button>
     </div>
   ));
 
@@ -33,12 +35,10 @@ function Room() {
       <div className="box-container">{boxes}</div>
 
       {/* Popup */}
-      {showPopup && (
+      {isOpen && (
         <div className="popup">
           <div className="popup-content">
-            <h2>Popup Box {selectedBox + 1}</h2>
-            <p>Popup content goes here.</p>
-            <button onClick={closePopup}>Close</button>
+            <Modal open={isOpen} onClose={() => setIsOpen(false)}/>
           </div>
         </div>
       )}

@@ -58,7 +58,20 @@ def submittext():
 
     return jsonify(data), 201
 
-@app.route("/gennotes/<roomid>")
+@app.route("/getnotes/<roomid>", methods=["GET"])
+def getnotes(roomid):
+    global masterdict
+    if (not roomid in masterdict):
+        return "Invalid roomid", 404
+    return masterdict.get(roomid), 200
+
+@app.route("/deletenote/<roomid>/<noteid>", methods=["DELETE"])
+def deletenote(roomid, noteid):
+    global masterdict
+    del masterdict[roomid][noteid]
+    return "Note "+noteid+" deleted", 200
+
+@app.route("/gennotes/<roomid>", methods=["GET"])
 def gennotes(roomid):
     global masterdict
     print(masterdict)
@@ -76,7 +89,7 @@ def gennotes(roomid):
     return output, 200
 
 #debug api
-@app.route("/generate/<prompt>")
+@app.route("/generate/<prompt>", methods=["GET"])
 def generate(prompt):
     prompt = "### Instruction:\n"+prompt+"\nWrite the word \"END\" when you complete the task."+"\n### Response:\n"
 

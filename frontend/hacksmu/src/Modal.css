@@ -1,0 +1,164 @@
+.modalflex {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: 80vh;
+    width: 150vh;
+}
+
+.text {
+    font-family: sans-serif;
+    margin-bottom: 2vh;
+    align-self: center;
+}
+
+.close {
+    align-self: flex-end;
+    background: 0px;
+    border: 0px;
+    font-size: 4vh;
+    margin-bottom: auto;
+    background-color: gray;
+}
+
+.again {
+    background-color: skyblue;
+    width: 20vw;
+    height: 6vh;
+    font-size: 3vh;
+    border: 0px;
+}
+
+.menu {
+    background-color: lightcoral;
+    width: 20vw;
+    height: 6vh;
+    font-size: 3vh;
+    border: 0px;
+}
+
+/* App.css */
+* {
+    font-family:Arial, Helvetica, sans-serif;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+  }
+  
+  .mcontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    height: 70vh;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 5rem;
+    box-sizing: border-box;
+  }
+  
+  .text-input {
+    width: 60vw;
+    height: 30vh;
+    padding: 10px;
+    font-size: 16px;
+    resize: none;
+  }
+  
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  input[type="file"] {
+    margin-bottom: 10px;
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  
+  .word-count-and-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5px;
+  }
+  
+  .word-count {
+    font-size: 14px;
+    color: #888;
+  }
+  
+  .name-input input[type="text"] {
+    width: 80%; /* Match the width of the text input */
+    padding: 10px;
+    font-size: 16px;
+    resize: none;
+    border: 1px solid #ccc; /* Add a border for clarity */
+    border-radius: 5px;
+  }
+  
+  .upload-button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: inline-block;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #007bff; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px; /* Add margin to separate the button and file name */
+    transition: background-color 0.2s ease;
+  }
+  
+  .upload-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .file-input {
+    display: none; /* Hide the actual file input element */
+  }
+  
+  .uploaded-file-name {
+    font-size: 14px;
+    color: #888;
+    margin-left: 10px; /* Add margin to separate the file name */
+  }
+  
+  .download-button {
+    text-align: center;
+    justify-content: center;
+    background-color: #007bff; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px; /* Add margin to separate from the word count */
+  }
+  
+  .submit-button {
+    background-color: #007bff; /* Button background color */
+    color: #fff; /* Button text color */
+    padding: 10px 20px; /* Add padding to make the button more visually appealing */
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease; /* Add a smooth transition effect for hover */
+  }
+  
+  .submit-button:hover {
+    background-color: #0056b3; /* Change background color on hover */
+  }

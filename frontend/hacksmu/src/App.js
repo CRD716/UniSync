@@ -1,6 +1,6 @@
 // App.js
 import { React } from 'react';
-import { BrowserRouter as Router, Route, Routes, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Navbar from './Navbar';
 import Home from './Home';
@@ -17,16 +17,17 @@ function App() {
       <div className="App">
         <Navbar />
         <Routes>
-          {!authenticated ? (
-            <Route path="/" element={<Login />} />
-          ) : (
+          {/* {!authenticated ? ( */}
+           
+           {/* ) : ( */}
             <>
-              <Route path="/" exact element={<Home />} />
+              <Route path="/login" element={<Login />} />
               <Route path="/" exact element={<Home />} />
               <Route path="/about" element={<About />} />
-              Login.rooms.map()
+              {console.log("app " + Login.rooms)}
+              {Login.rooms.map((item) => (<Route path={"/" + item} element={<Room />} /> ))}
             </>
-          )}
+          {/* )} */}
           
           
         </Routes>

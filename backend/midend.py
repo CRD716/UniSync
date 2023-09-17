@@ -84,8 +84,11 @@ def gennotes(roomid):
         print(key)
         concatedString += masterdict.get(roomid).get(key).get("txt") + " "
     prompt = "### Instruction:\n"+"Summarize and combine the following notes from multiple people."+"\nWrite the word \"END\" when you complete the task."+" "+concatedString+"\n### Response:\n"
-    output = llm(prompt, max_tokens=256, temperature=0.3, mirostat_mode=2, stop=["END"], echo=True)
+    output = llm(prompt, max_tokens=4096, temperature=0.3, mirostat_mode=2, stop=["END"], echo=False)
+    output = output.get("choices")
     print(output)
+    output = output[0].get("text")
+    #output = output.split("### Response:")
     return output, 200
 
 #debug api
@@ -93,7 +96,7 @@ def gennotes(roomid):
 def generate(prompt):
     prompt = "### Instruction:\n"+prompt+"\nWrite the word \"END\" when you complete the task."+"\n### Response:\n"
 
-    output = llm(prompt, max_tokens=256, temperature=0.4, mirostat_mode=2, stop=["END"], echo=True)
+    output = llm(prompt, max_tokens=4096, temperature=0.4, mirostat_mode=2, stop=["END"], echo=True)
     print(output)
     return output, 200
 

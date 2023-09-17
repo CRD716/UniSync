@@ -12,17 +12,17 @@ function generateRoomCode() {
 }
 
 
-function Login() {
+function Login(props) {
   const [isJoining, setIsJoining] = useState(true);
   const [roomCode, setRoomCode] = useState('');
-  const [rooms, setRooms] = useState([]);
+  const {updateRooms} = props;
   const navigate = useNavigate();
 
 
   function HandleCreateRoom() {
     const newRoomCode = generateRoomCode();
-    setRooms(() => {console.log("len " + rooms.length()); return([...rooms, newRoomCode])});
-    console.log(rooms);
+    updateRooms(rooms => ([...rooms, newRoomCode]));
+    //console.log(rooms);
     console.log('Creating room with code:', newRoomCode);
     navigate(('/'+newRoomCode));
   }

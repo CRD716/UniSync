@@ -1,5 +1,5 @@
 // App.js
-import { React } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Navbar from './Navbar';
@@ -11,6 +11,10 @@ import Room from './Room';
 
 function App() {
   const { authenticated } = useAuth();
+  const [rooms, setRooms] = useState([]);
+  const updateRooms = (newRooms) => {
+    setRooms(newRooms);
+  };
 
   return (
     <Router>
@@ -21,11 +25,11 @@ function App() {
            
            {/* ) : ( */}
             <>
-              <Route path="/login" element={<Login />} />
-              <Route path="/" exact element={<Home />} />
+              <Route path="/" element={<Login updateRooms={updateRooms}/>} />
+              {/* <Route path="/" exact element={<Home />} /> */}
               <Route path="/about" element={<About />} />
-              {console.log("app " + Login.rooms)}
-              {Login.rooms.map((item) => (<Route path={"/" + item} element={<Room />} /> ))}
+              {console.log("app " + rooms)}
+              {rooms.map((item) => (<Route path={"/" + item} element={<Room />} /> ))}
             </>
           {/* )} */}
           

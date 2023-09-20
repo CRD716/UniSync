@@ -77,7 +77,7 @@ function Room() {
       };
 
       // Add the new note to the notes array
-      console.warn('Added new note object: ' + newNote);
+      console.log('Added new note object: ' + newNote);
       setNotes([...notes, newNote]);
       postData(window.location.href.split('3000/')[1], text);
 

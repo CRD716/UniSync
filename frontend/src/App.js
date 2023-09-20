@@ -17,6 +17,7 @@ function App() {
   const updateRooms = (newRooms) => {
     setRooms(newRooms);
   };
+  console.log(rooms);
 
   return (
     <Router>
@@ -27,7 +28,7 @@ function App() {
             
             {/* ) : ( */}
               <>
-                <Route path="/" element={<Login updateRooms={updateRooms}/>} />
+                <Route path="/" element={<Login updateRooms={updateRooms} rooms={rooms}/>} />
                 {/* <Route path="/" exact element={<Home />} /> */}
                 <Route path="/about" element={<About />} />
                 {rooms.map((item) => (<Route path={"/" + item} element={<Room />} /> ))}

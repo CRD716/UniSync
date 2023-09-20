@@ -3,6 +3,9 @@ import React, { useState } from 'react';
 import './Login.css';
 import { Navigate, useNavigate } from 'react-router-dom';
 import Room from './Room';
+import App from './App';
+
+//print length of rooms from './App'
 
 
 function generateRoomCode() {
@@ -13,10 +16,9 @@ function generateRoomCode() {
 }
 
 
-function Login(props) {
+function Login({updateRooms, rooms}) {
   const [isJoining, setIsJoining] = useState(true);
   const [roomCode, setRoomCode] = useState('');
-  const { updateRooms } = props;
   const navigate = useNavigate();
 
 
@@ -32,13 +34,22 @@ function Login(props) {
     e.preventDefault();
     
     if (isJoining) {
+      console.log(rooms);
       // Handle joining a room with roomCode
       console.log('Joining room with code:', roomCode);
+      if(rooms.includes(roomCode)){
+        console.log('Room exists');
+        navigate('/'+roomCode);
+      }
+      else{
+        console.log("Room does not exist");
+      }
+
     } else {
       // Handle creating a room with roomCode
       const newRoomCode = generateRoomCode();
       console.log('Creating room with code:', newRoomCode);
-      Navigate('/room/room');
+      navigate('/'+roomCode);
     }
   };
 
